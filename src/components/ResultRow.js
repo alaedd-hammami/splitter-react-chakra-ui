@@ -12,7 +12,7 @@ const ResultRow = ({ label, value }) => {
         </Text>
       </Box>
       <Flex justify="center" align="center">
-        <Image w={5} h={6} mr="2px" src={dollar} />
+        <Image w={5} h={6} mr="2px" src={dollar} alt="dollar icon" />
         <Text fontSize="4xl" fontWeight="bold" color="brand.500">
           {Number.parseFloat(value).toFixed(2)}
         </Text>

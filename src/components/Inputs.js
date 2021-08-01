@@ -21,7 +21,7 @@ const Inputs = ({
     <VStack spacing={8} maxW={{ md: '350px' }}>
       <AppInput
         label="Bill"
-        leftElement={<Image src={dollar} />}
+        leftElement={<Image src={dollar} alt="dollar icon" />}
         value={billValue}
         onChange={(e) => onBillChange(e)}
       />
@@ -62,7 +62,7 @@ const Inputs = ({
       </Box>
       <AppInput
         label="Number of People"
-        leftElement={<Image src={person} />}
+        leftElement={<Image src={person} alt="person icon" />}
         value={peopleValue}
         error={error}
         isInvalid={error}

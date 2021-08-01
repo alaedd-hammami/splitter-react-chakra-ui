@@ -5,7 +5,7 @@ import logo from '../assets/logo.svg'
 const Logo = () => {
   return (
     <Center p={10} py={{ md: 20 }} color="brand.400">
-      <Image src={logo} />
+      <Image src={logo} alt="Splitter app logo" />
     </Center>
   )
 }
