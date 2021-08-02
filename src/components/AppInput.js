@@ -37,11 +37,11 @@ const AppInput = ({
           color="brand.600"
           fontWeight="bold"
           fontSize="xl"
-          _focus={{ borderColor: 'brand.500', borderWidth: '2px' }}
-          onChange={(e) => onChange(e)}
           isInvalid={isInvalid}
           errorBorderColor="red.400"
           value={value}
+          _focus={{ borderColor: 'brand.500', borderWidth: '2px' }}
+          onChange={(e) => onChange(e)}
         />
       </InputGroup>
     </Box>

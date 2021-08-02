@@ -1,5 +1,5 @@
 import { Box, Center, Flex, Spacer } from '@chakra-ui/react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Result from './components/Result'
 import Logo from './components/Logo'
 import Inputs from './components/Inputs'
@@ -14,19 +14,14 @@ function App() {
   const [total, setTotal] = useState(0)
   const [error, setError] = useState('')
 
-  const handleCustomTip = (e) => {
-    setCustomTip(e.target.value)
-    setTip(e.target.value)
-    setSelectedTip('')
-  }
+  useEffect(() => {
+    if (people === '' || bill === '') {
+      setTipAmount(0)
+      setTotal(0)
+      setError('')
+      return
+    }
 
-  const handleTipSelection = (e) => {
-    setCustomTip('')
-    setTip(e.target.value)
-    setSelectedTip(e.target.value)
-  }
-
-  const calculate = () => {
     if (+people === 0) {
       return setError("Can't be zero")
     }
@@ -37,6 +32,18 @@ function App() {
 
     const totalPerPerson = +bill / +people
     setTotal(Number.parseFloat(totalPerPerson + tipPerPerson).toFixed(2))
+  }, [bill, tip, people])
+
+  const handleCustomTip = (e) => {
+    setCustomTip(e.target.value)
+    setTip(e.target.value)
+    setSelectedTip('')
+  }
+
+  const handleTipSelection = (e) => {
+    setCustomTip('')
+    setTip(e.target.value)
+    setSelectedTip(e.target.value)
   }
 
   const reset = () => {
@@ -78,7 +85,7 @@ function App() {
             <Result
               amount={tipAmount}
               total={total}
-              onCalculate={calculate}
+              btnDisabled={people === '' && bill === '' && tip === ''}
               onReset={reset}
             />
           </Flex>

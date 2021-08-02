@@ -1,8 +1,9 @@
-import { Box, Button, Flex } from '@chakra-ui/react'
+import { Box, Flex } from '@chakra-ui/react'
 import React from 'react'
 import ResultRow from './ResultRow'
+import ResultButton from './ResultButton'
 
-const Result = ({ amount = 0, total = 0, onCalculate, onReset }) => {
+const Result = ({ amount = 0, total = 0, btnDisabled, onReset }) => {
   return (
     <Flex
       direction="column"
@@ -19,33 +20,9 @@ const Result = ({ amount = 0, total = 0, onCalculate, onReset }) => {
         <ResultRow label="Tip Amount" value={amount} />
         <ResultRow label="Total" value={total} />
       </Box>
-      {amount === 0 && total === 0 ? (
-        <Button
-          w="100%"
-          bg="brand.500"
-          color="brand.600"
-          fontWeight="bold"
-          fontSize="xl"
-          _active={{ bg: 'brand.500' }}
-          _hover={{ bg: '#9fe8df' }}
-          onClick={() => onCalculate()}
-        >
-          CALCULATE
-        </Button>
-      ) : (
-        <Button
-          w="100%"
-          bg="brand.500"
-          color="brand.600"
-          fontWeight="bold"
-          fontSize="xl"
-          _active={{ bg: 'brand.500' }}
-          _hover={{ bg: '#9fe8df' }}
-          onClick={() => onReset()}
-        >
-          RESET
-        </Button>
-      )}
+      <ResultButton disabled={btnDisabled} onClick={onReset}>
+        Reset
+      </ResultButton>
     </Flex>
   )
 }
